@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 NFL Draft Big Board</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+        th { cursor: pointer; background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>2025 NFL Draft Big Board</h1>
+    <table id="bigBoard">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Rank</th>
+                <th onclick="sortTable(1)">Player</th>
+                <th onclick="sortTable(2)">Position</th>
+                <th onclick="sortTable(3)">School</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Player A</td><td>QB</td><td>Alabama</td></tr>
+            <tr><td>2</td><td>Player B</td><td>WR</td><td>Ohio State</td></tr>
+            <tr><td>3</td><td>Player C</td><td>EDGE</td><td>Georgia</td></tr>
+        </tbody>
+    </table>
+    
+    <script>
+        function sortTable(columnIndex) {
+            const table = document.getElementById("bigBoard");
+            let rows = Array.from(table.rows).slice(1);
+            let sortedRows = rows.sort((a, b) => a.cells[columnIndex].innerText.localeCompare(b.cells[columnIndex].innerText));
+            table.tBodies[0].append(...sortedRows);
+        }
+    </script>
+</body>
+</html>
